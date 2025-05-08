@@ -32,7 +32,7 @@ class RestGroupSharedFileUploadAdapter(
     private val fileQueryUsecase: GroupFileQueryUsecase
 ): GroupSharedFilePort {
 
-    @PutMapping("/group-files", consumes = ["multipart/form-data"], produces = ["application/json"])
+    @PutMapping("/group-shared", consumes = ["multipart/form-data"], produces = ["application/json"])
     @ApiResponse(responseCode = "200", description = "업로드 성공")
     @SecurityRequirement(name = "bearer-jwt")
     @Operation(summary = "그룹 공유 파일을 업로드한다", description = "그룹 공유 파일 업로드")
@@ -55,7 +55,7 @@ class RestGroupSharedFileUploadAdapter(
         return GroupFileUploadResponse.of(result)
     }
 
-    @GetMapping("/group-files/{fileId}")
+    @GetMapping("/group-shared/{fileId}")
     @ApiResponse(responseCode = "200", description = "파일 조회 성공")
     @SecurityRequirement(name = "bearer-jwt")
     @Operation(summary = "그룹 공유 파일을 조회한다", description = "그룹 공유 파일 조회, 실제 파일 엑세스를 위한 Signed URL을 반환합니다.")
